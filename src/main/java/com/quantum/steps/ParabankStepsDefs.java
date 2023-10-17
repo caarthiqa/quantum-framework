@@ -26,7 +26,10 @@ public class ParabankStepsDefs {
 
     @Given("^the user launches the chrome$")
     public void the_user_launches_the_chrome() throws Throwable {
-        new WebDriverTestBase().getDriver().get("http://192.168.0.182:8080/parabank/index.htm");
+        new WebDriverTestBase().getDriver().get(
+        //        "http://192.168.0.182:8080/parabank/index.htm"
+                "https://parabank.parasoft.com/parabank/index.htm"
+        );
 //        throw new PendingException();
     }
 
@@ -88,7 +91,7 @@ public class ParabankStepsDefs {
     public void the_user_selects_an_option_from_the_drop_down_list_box(String arg1) throws Throwable {
         QAFExtendedWebElement AccountNumber = new QAFExtendedWebElement(By.xpath("//*[@id=\"fromAccountId\"]"));
         Select dropdown = new Select(AccountNumber);
-        dropdown.selectByIndex(5);
+        dropdown.selectByIndex(1);
 //        throw new PendingException();
     }
 
@@ -157,7 +160,7 @@ public class ParabankStepsDefs {
     public void selects_the_from_account() throws Throwable {
         QAFExtendedWebElement FromAccount = new QAFExtendedWebElement(By.xpath("//*[@id=\"fromAccountId\"]"));
         Select dropdown1 = new Select(FromAccount);
-        dropdown1.selectByIndex(5);
+        dropdown1.selectByIndex(1);
 //        throw new PendingException();
     }
 
@@ -165,7 +168,7 @@ public class ParabankStepsDefs {
     public void selects_the_To_account() throws Throwable {
         QAFExtendedWebElement ToAccount = new QAFExtendedWebElement(By.xpath("//*[@id=\"toAccountId\"]"));
         Select dropdown2 = new Select(ToAccount);
-        dropdown2.selectByIndex(5);
+        dropdown2.selectByIndex(1);
 //        throw new PendingException();
     }
 
@@ -272,7 +275,7 @@ public class ParabankStepsDefs {
     public void selects_the_account_from_the_From_AccounT_Drop_down_list_box() throws Throwable {
         QAFExtendedWebElement FromAccount1 = new QAFExtendedWebElement(By.xpath("//*[@id=\"rightPanel\"]/div/div[1]/form/table/tbody/tr[13]/td[2]/select"));
         Select Dropdown3 = new Select(FromAccount1);
-        Dropdown3.selectByIndex(5);
+        Dropdown3.selectByIndex(1);
 
     }
 
@@ -280,6 +283,7 @@ public class ParabankStepsDefs {
     public void clicks_on_the_Send_Payment_Button() throws Throwable {
         QAFExtendedWebElement SendPaymentButton = new QAFExtendedWebElement(By.xpath("//*[@id=\"rightPanel\"]/div/div[1]/form/table/tbody/tr[14]/td[2]/input"));
         SendPaymentButton.click();
+        Thread.sleep(2000);
     }
 
     @Then("^the Bill Payment Complete page is displayed$")
@@ -342,7 +346,7 @@ public class ParabankStepsDefs {
     public void the_user_enters_the_value_in_any_of_the_given_options() throws Throwable {
         QAFExtendedWebElement SelectAnAccount = new QAFExtendedWebElement(By.xpath("//*[@id=\"accountId\"]"));
         Select Dropdown4 = new Select(SelectAnAccount);
-        Dropdown4.selectByIndex(5);
+        Dropdown4.selectByIndex(1);
 
         QAFExtendedWebElement FindByAmount = new QAFExtendedWebElement(By.xpath("//*[@id=\"criteria.amount\"]"));
         FindByAmount.sendKeys("152");
@@ -517,7 +521,7 @@ public class ParabankStepsDefs {
     public void the_user_selects_the_from_account() throws Throwable {
         QAFExtendedWebElement FromAccountDD = new QAFExtendedWebElement(By.xpath("//*[@id=\"fromAccountId\"]"));
         Select Dropdown6 = new Select(FromAccountDD);
-        Dropdown6.selectByIndex(5);
+        Dropdown6.selectByIndex(1);
 
     }
 
@@ -573,7 +577,7 @@ public class ParabankStepsDefs {
     // Logout testcase
 
     @Given("^the user is in the customer page$")
-    public void the_user_is_in_the_customer_page() throws Throwable {
+    public static void the_user_is_in_the_customer_page() throws Throwable {
         QAFExtendedWebElement AccountServices = new QAFExtendedWebElement(By.xpath("//h2[normalize-space()='Account Services']"));
         String ASTitle = AccountServices.getText();
         if (ASTitle.contains("Account Services")) {
@@ -588,14 +592,14 @@ public class ParabankStepsDefs {
     }
 
     @When("^the user clicks on the Logout button$")
-    public void the_user_clicks_on_the_Logout_button() throws Throwable {
+    public static void the_user_clicks_on_the_Logout_button() throws Throwable {
         QAFExtendedWebElement LogOut = new QAFExtendedWebElement(By.xpath("//a[normalize-space()='Log Out']"));
         LogOut.click();
 //        throw new PendingException();
     }
 
     @Then("^the user is logged out successfully$")
-    public void the_user_is_logged_out_successfully() throws Throwable {
+    public static void the_user_is_logged_out_successfully() throws Throwable {
         QAFExtendedWebElement CustomerLogin = new QAFExtendedWebElement(By.xpath("//h2[normalize-space()='Customer Login']"));
         String CLTitle = CustomerLogin.getText();
         if (CLTitle.contains("Customer Login")) {

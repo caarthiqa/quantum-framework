@@ -3,19 +3,24 @@
 	thread-count="100">
 	<listeners>
 		<listener class-name="com.quantum.listeners.QuantumReportiumListener" />
+		<listener class-name="com.quantum.steps.TestNG" />
 	</listeners>
 
-	<test name="Web Scenarios Android Test" enabled="true"
+	<test name="Web Scenarios Test" enabled="true"
 		thread-count="10">
 <!--		<parameter name="perfecto.capabilities.model" value="Galaxy.*"></parameter>-->
 		<groups>
 			<run>
-				<include name="@Parabank" />
+<!--				<include name="@Parabank" />-->
+				<include name="@AdminLogin" />
+<!--				<include name="@BillPay" />-->
 			</run>
 		</groups>
 		<classes>
 			<class
 				name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory" />
+<!--			<class-->
+<!--					name="com.quantum.steps.TestNG"/>-->
 		</classes>
 	</test>
 	<test name="Web Scenarios iOS Test" enabled="false" thread-count="10">
